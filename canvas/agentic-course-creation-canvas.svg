@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 1188 840" font-family="Helvetica, Arial, sans-serif">
+<title>Agentic Course Creation Canvas</title>
+<rect x="0" y="0" width="1188" height="840" fill="#FFFFFF"/>
+<text x="30" y="58" font-size="26" font-weight="700" fill="#2C2C2A">Agentic Course Creation Canvas</text>
+<text x="30" y="82" font-size="13" fill="#5F5E5A">The agent walks the learner’s path, the instructor decides, checks come before release.</text>
+<text x="640" y="50" font-size="11" fill="#5F5E5A">Course</text><line x1="640" y1="78" x2="830" y2="78" stroke="#B4B2A9" stroke-width="1"/>
+<text x="860" y="50" font-size="11" fill="#5F5E5A">Instructors</text><line x1="860" y1="78" x2="1020" y2="78" stroke="#B4B2A9" stroke-width="1"/>
+<text x="1050" y="50" font-size="11" fill="#5F5E5A">Run / version</text><line x1="1050" y1="78" x2="1148" y2="78" stroke="#B4B2A9" stroke-width="1"/>
+<text x="30" y="112" font-size="15" font-weight="700" fill="#2C2C2A">Purpose</text>
+<text x="412" y="112" font-size="15" font-weight="700" fill="#2C2C2A">Design</text>
+<text x="794" y="112" font-size="15" font-weight="700" fill="#2C2C2A">Build and improve</text>
+<rect x="30" y="125" width="364" height="132" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="44" y="151" font-size="17" font-weight="700" fill="#3C3489">1  Change</text>
+<rect x="266" y="136" width="118" height="20" rx="10" fill="#FFFFFF" stroke="#534AB7" stroke-width="0.8"/>
+<text x="325.0" y="150" font-size="11" text-anchor="middle" fill="#3C3489">instructor decides</text>
+<text x="44" y="173" font-size="11.5" fill="#534AB7">What can learners do afterwards,</text>
+<text x="44" y="189" font-size="11.5" fill="#534AB7">in which real situation?</text>
+<rect x="30" y="269" width="364" height="132" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="44" y="295" font-size="17" font-weight="700" fill="#3C3489">2  Learners</text>
+<rect x="266" y="280" width="118" height="20" rx="10" fill="#FFFFFF" stroke="#534AB7" stroke-width="0.8"/>
+<text x="325.0" y="294" font-size="11" text-anchor="middle" fill="#3C3489">instructor decides</text>
+<text x="44" y="317" font-size="11.5" fill="#534AB7">Background, goals, time, equipment</text>
+<text x="44" y="333" font-size="11.5" fill="#534AB7">Who is the weakest learner we serve?</text>
+<rect x="30" y="413" width="364" height="132" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="44" y="439" font-size="17" font-weight="700" fill="#3C3489">3  Learning goals</text>
+<rect x="266" y="424" width="118" height="20" rx="10" fill="#FFFFFF" stroke="#534AB7" stroke-width="0.8"/>
+<text x="325.0" y="438" font-size="11" text-anchor="middle" fill="#3C3489">instructor decides</text>
+<text x="44" y="461" font-size="11.5" fill="#534AB7">Observable: “can …”</text>
+<text x="44" y="477" font-size="11.5" fill="#534AB7">What the course does not cover</text>
+<rect x="30" y="557" width="364" height="132" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="44" y="583" font-size="17" font-weight="700" fill="#3C3489">4  Evidence</text>
+<rect x="266" y="568" width="118" height="20" rx="10" fill="#FFFFFF" stroke="#534AB7" stroke-width="0.8"/>
+<text x="325.0" y="582" font-size="11" text-anchor="middle" fill="#3C3489">instructor decides</text>
+<text x="44" y="605" font-size="11.5" fill="#534AB7">Which deliverable shows each goal?</text>
+<text x="44" y="621" font-size="11.5" fill="#534AB7">Criteria, certificate</text>
+<rect x="412" y="125" width="364" height="132" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="426" y="151" font-size="17" font-weight="700" fill="#085041">5  Constraints</text>
+<rect x="678" y="136" width="88" height="20" rx="10" fill="#FFFFFF" stroke="#0F6E56" stroke-width="0.8"/>
+<text x="722.0" y="150" font-size="11" text-anchor="middle" fill="#085041">agent drafts</text>
+<text x="426" y="173" font-size="11.5" fill="#0F6E56">Sessions, workload budget, dates</text>
+<text x="426" y="189" font-size="11.5" fill="#0F6E56">Platforms, tool costs, licenses</text>
+<rect x="412" y="269" width="364" height="132" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="426" y="295" font-size="17" font-weight="700" fill="#3C3489">6  Assumed knowledge</text>
+<rect x="648" y="280" width="118" height="20" rx="10" fill="#FFFFFF" stroke="#534AB7" stroke-width="0.8"/>
+<text x="707.0" y="294" font-size="11" text-anchor="middle" fill="#3C3489">instructor decides</text>
+<text x="426" y="317" font-size="11.5" fill="#534AB7">What learners know, have and have done</text>
+<text x="426" y="333" font-size="11.5" fill="#534AB7">Everything else: taught before it is used</text>
+<rect x="412" y="413" width="364" height="132" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="426" y="439" font-size="17" font-weight="700" fill="#3C3489">7  Design decisions</text>
+<rect x="648" y="424" width="118" height="20" rx="10" fill="#FFFFFF" stroke="#534AB7" stroke-width="0.8"/>
+<text x="707.0" y="438" font-size="11" text-anchor="middle" fill="#3C3489">instructor decides</text>
+<text x="426" y="461" font-size="11.5" fill="#534AB7">Sequence, project, format, tools</text>
+<text x="426" y="477" font-size="11.5" fill="#534AB7">Source of truth for each fact</text>
+<rect x="412" y="557" width="364" height="132" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="426" y="583" font-size="17" font-weight="700" fill="#085041">8  Checks</text>
+<rect x="678" y="568" width="88" height="20" rx="10" fill="#FFFFFF" stroke="#0F6E56" stroke-width="0.8"/>
+<text x="722.0" y="582" font-size="11" text-anchor="middle" fill="#085041">agent drafts</text>
+<text x="426" y="605" font-size="11.5" fill="#0F6E56">Alignment, boundary, workload, links</text>
+<text x="426" y="621" font-size="11.5" fill="#0F6E56">Consistency, nothing private made public</text>
+<rect x="794" y="125" width="364" height="132" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="808" y="151" font-size="17" font-weight="700" fill="#085041">9  Resources</text>
+<rect x="1060" y="136" width="88" height="20" rx="10" fill="#FFFFFF" stroke="#0F6E56" stroke-width="0.8"/>
+<text x="1104.0" y="150" font-size="11" text-anchor="middle" fill="#085041">agent drafts</text>
+<text x="808" y="173" font-size="11.5" fill="#0F6E56">Per unit: instructor, participant, code</text>
+<text x="808" y="189" font-size="11.5" fill="#0F6E56">Draft · checked · released</text>
+<rect x="794" y="269" width="364" height="132" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="808" y="295" font-size="17" font-weight="700" fill="#085041">10  Learner signals</text>
+<rect x="1060" y="280" width="88" height="20" rx="10" fill="#FFFFFF" stroke="#0F6E56" stroke-width="0.8"/>
+<text x="1104.0" y="294" font-size="11" text-anchor="middle" fill="#085041">agent drafts</text>
+<text x="808" y="317" font-size="11.5" fill="#0F6E56">Walkthroughs per persona before release</text>
+<text x="808" y="333" font-size="11.5" fill="#0F6E56">Questions, quizzes, gaps after</text>
+<rect x="794" y="413" width="364" height="277" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="808" y="439" font-size="17" font-weight="700" fill="#3C3489">11  Improvements</text>
+<rect x="1030" y="424" width="118" height="20" rx="10" fill="#FFFFFF" stroke="#534AB7" stroke-width="0.8"/>
+<text x="1089.0" y="438" font-size="11" text-anchor="middle" fill="#3C3489">instructor decides</text>
+<text x="808" y="461" font-size="11.5" fill="#534AB7">What changes now, what next run</text>
+<text x="808" y="477" font-size="11.5" fill="#534AB7">Which signal became a check or rule</text>
+<rect x="30" y="706" width="555" height="80" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1"/>
+<text x="44" y="730" font-size="15" font-weight="700" fill="#444441">Open questions</text><text x="44" y="748" font-size="11.5" fill="#5F5E5A">Who resolves it, by when?</text>
+<rect x="603" y="706" width="555" height="80" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1"/>
+<text x="617" y="730" font-size="15" font-weight="700" fill="#444441">Decision log</text><text x="617" y="748" font-size="11.5" fill="#5F5E5A">Date · decision · reason · alternatives</text>
+<rect x="30" y="802" width="14" height="14" rx="3" fill="#EEEDFE" stroke="#534AB7"/><text x="50" y="813" font-size="11.5" fill="#2C2C2A">Instructor decides</text>
+<rect x="175" y="802" width="14" height="14" rx="3" fill="#E1F5EE" stroke="#0F6E56"/><text x="195" y="813" font-size="11.5" fill="#2C2C2A">Agent drafts, instructor approves</text>
+<text x="1158" y="813" font-size="10.5" text-anchor="end" fill="#5F5E5A">Agentic Course Creation Canvas v0.1 · CC BY 4.0 · github.com/steffen74/agentic-course-creation</text>
+</svg>

@@ -1,0 +1,21 @@
+{
+  "name": "agentic-course-creation",
+  "owner": {
+    "name": "Steffen Brandt",
+    "url": "https://github.com/steffen74"
+  },
+  "description": "Agentic course creation skills as an installable plugin.",
+  "plugins": [
+    {
+      "name": "agentic-course-creation",
+      "source": "./",
+      "description": "A canvas, a process and agent skills for designing, building and improving a course with a coding agent.",
+      "category": "education",
+      "keywords": [
+        "education",
+        "course-design",
+        "skills"
+      ]
+    }
+  ]
+}

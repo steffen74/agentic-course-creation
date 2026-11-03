@@ -1,0 +1,35 @@
+{
+  "name": "agentic-course-creation",
+  "version": "0.1.0",
+  "description": "A canvas, a process and agent skills for designing, building and improving a course with a coding agent: the agent finds facts and walks the learner's path, the instructor decides, and material passes explicit checks before learners see it.",
+  "author": {
+    "name": "Steffen Brandt",
+    "url": "https://github.com/steffen74"
+  },
+  "repository": "https://github.com/steffen74/agentic-course-creation",
+  "license": "MIT",
+  "keywords": [
+    "education",
+    "course-design",
+    "instructional-design",
+    "skills",
+    "canvas",
+    "learner-walkthrough"
+  ],
+  "skills": [
+    "./skills/ask-course",
+    "./skills/assumed-knowledge",
+    "./skills/course-checks",
+    "./skills/course-retro",
+    "./skills/draft-unit",
+    "./skills/grill-course",
+    "./skills/learner-instructions",
+    "./skills/map-resources",
+    "./skills/review-unit",
+    "./skills/setup-course",
+    "./skills/to-course-plan",
+    "./skills/to-quiz",
+    "./skills/to-slides",
+    "./skills/walk-through"
+  ]
+}
