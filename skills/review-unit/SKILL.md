@@ -33,4 +33,13 @@ If no walkthrough for this unit exists, or the material changed after it, run `/
 
 One list, each finding marked **blocking** (learners would get stuck or see instructor content) or **note**, with evidence and a suggested fix. End with a recommendation: **release**, **fix then release** (list the fixes) or **hold**.
 
-The verdict is the instructor’s. Apply only the fixes they pick, then rerun the failed checks. Record the verdict in `DECISIONS.md` and set the unit’s status in `RESOURCES.md`.
+## Decisions
+
+The verdict is the instructor’s, and so is every finding with more than one reasonable fix. Ask them as multiple-choice questions, using your environment’s question tool if it has one, otherwise numbered in the text. Each question carries its own context, so the instructor can answer without having read the report:
+
+- **What and where**: the finding in one or two plain sentences, with the file and what it says. Name the tool or skill involved and what it does, if the instructor may not have it in mind.
+- **Why it matters**: what happens to learners if nothing changes.
+- **Constraints**: canvas entries, earlier decisions or facts that rule an option in or out.
+- **Options**: two to four, each with its consequence (what changes where, what it costs, what risk stays). Put your recommendation first and mark it *(Recommended)*.
+
+Ask the verdict last, after the questions it depends on. Apply only the fixes the instructor picks, then rerun the failed checks. Record the verdict and each decision in `DECISIONS.md` and set the unit’s status in `RESOURCES.md`.

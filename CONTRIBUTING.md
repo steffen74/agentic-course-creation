@@ -12,7 +12,7 @@ Feedback from real courses is the most valuable contribution. Useful issues desc
 
 - Follow the structure of [Matt Pocock’s skills](https://github.com/mattpocock/skills) and his `writing-for-agents` guide: short, steps with completion criteria, reference behind pointers.
 - User-invoked skills set `disable-model-invocation: true` and have a one-line human-facing description. Reference skills keep a model-facing description with their triggers.
-- Every instructor decision is an explicit **stop point**: the agent recommends, the instructor decides, the decision is logged.
+- Every instructor decision is an explicit **stop point**: the agent recommends, the instructor decides, the decision is logged. Decisions are asked as multiple-choice questions that carry their own context (what and where, why it matters, constraints, options with consequences, the recommendation first); see `/review-unit`.
 - Skills read and write the files named in the `## Agentic course creation` section of `AGENTS.md`; they do not invent new locations.
 - The canvas template has a single source: `skills/setup-course/templates/COURSE-CANVAS.md`.
 - Keep the block-by-block correspondence with the [Agentic Data Science Canvas](https://github.com/steffen74/agentic-data-science).
