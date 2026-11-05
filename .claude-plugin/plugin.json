@@ -27,6 +27,7 @@
     "./skills/map-resources",
     "./skills/review-unit",
     "./skills/setup-course",
+    "./skills/show-canvas",
     "./skills/to-course-plan",
     "./skills/to-quiz",
     "./skills/to-slides",

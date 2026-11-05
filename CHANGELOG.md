@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- New skill `/show-canvas`: renders `COURSE-CANVAS.md` as an HTML page laid out like the printed canvas (`scripts/render_canvas.py`, standard library only). Empty blocks are marked as not decided or not drafted; with `DECISIONS.md`, each block shows its decisions and those newer than the canvas version. `live` re-renders on every change. Also reads the `CANVAS.md` of Agentic Data Science.
 - `/to-quiz`: a house style per course (title, text under the title, closing questions every quiz ends with, theme), asked once and kept in the Quizzes line. `export_quiz.py` takes `--description` and `--closing` (choice questions without a correct answer, or open text). Feedback from a real course.
 - `/to-slides`: slides show only what the room needs at that moment; links to other units, outlooks, background and where to find things later go into the speaker notes (except on homework and outlook slides). Feedback from a real course.
 - `/review-unit` asks its decisions as multiple-choice questions, each with its own context (the finding and where it is, why it matters, constraints, options with consequences, the recommendation first), and asks the verdict last. Feedback from a real course: questions without background left the instructor guessing.

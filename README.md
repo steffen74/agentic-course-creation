@@ -49,6 +49,7 @@ Plain-text agent skills (`SKILL.md`) for Claude Code, GitHub Copilot, Cursor, Co
 |---|---|---|
 | `/setup-course` | Set up the course repository once: canvas, personas, resource map, decision log, signals, checks | all |
 | `/ask-course` | Find out which skill fits your situation | – |
+| `/show-canvas` | See the canvas as a page in the browser, with empty blocks and stale blocks marked; `live` keeps it updating | all |
 | `/grill-course` | Get interviewed until change, learners, goals, evidence and assumed knowledge are sharp | 1–4, 6 |
 | `/map-resources` | Inventory every repository and platform: who sees what, source of truth, conflicts, leaks | 5, 9 |
 | `/to-course-plan` | Unit plan with alignment matrix, growth of assumed knowledge and workload | 3, 4, 6, 7 |
