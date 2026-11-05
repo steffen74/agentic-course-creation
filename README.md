@@ -28,6 +28,8 @@ The [Agentic Course Creation Canvas](canvas/) is one page with eleven blocks plu
 
 In a course repository the canvas lives as `COURSE-CANVAS.md`. A printable version is in [`canvas/`](canvas/).
 
+[![The Agentic Course Creation Canvas](canvas/agentic-course-creation-canvas.svg)](canvas/agentic-course-creation-canvas.pdf)
+
 ### 2. The process
 
 ```
