@@ -42,6 +42,7 @@ Build the deck in the settled format and template:
 
 - A title on every slide that states its point (“Most forecast errors fall on public holidays”), not a topic (“Results”).
 - Little text; what the instructor says belongs in the speaker notes, taken from the session plan.
+- Only what the room needs at that moment of the session. Links to other units, outlooks, background and where to find things later go into the speaker notes; the homework and outlook slides are the exception, since that is their job.
 - Every link, repository name, command and deadline exactly as in its source of truth in `RESOURCES.md`.
 - Live demos get a fallback slide (a screenshot or the expected output) in case the demo fails.
 

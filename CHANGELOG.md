@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- `/to-slides`: slides show only what the room needs at that moment; links to other units, outlooks, background and where to find things later go into the speaker notes (except on homework and outlook slides). Feedback from a real course.
 - `/review-unit` asks its decisions as multiple-choice questions, each with its own context (the finding and where it is, why it matters, constraints, options with consequences, the recommendation first), and asks the verdict last. Feedback from a real course: questions without background left the instructor guessing.
 
 - New skill `/to-quiz`: questions on the previous unit go into one private quiz source; the quiz is created through a connector when one is connected (Formbricks has an official MCP server with OAuth sign-in), otherwise exported with `scripts/export_quiz.py` for Formbricks (survey JSON for the Management API) or Microsoft Forms (Quick Import `.docx` plus answer key). Slides show the quiz link, not the questions.
