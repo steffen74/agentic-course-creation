@@ -1,6 +1,6 @@
 {
   "name": "agentic-course-creation",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A canvas, a process and agent skills for designing, building and improving a course with a coding agent: the agent finds facts and walks the learner's path, the instructor decides, and material passes explicit checks before learners see it.",
   "author": {
     "name": "Steffen Brandt",
