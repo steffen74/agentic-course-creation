@@ -36,6 +36,7 @@ Course material fails quietly: a missing step, a renamed repository or a sample 
 | No sample answer appears on a slide before the task it answers | Session plan order | manual |
 | The slide PDF in the handbook is the current deck, without speaker notes or hidden answer slides | Deck version, `RESOURCES.md` | manual |
 | Quiz questions cover only content learners met before the session | Previous unit’s material | walkthrough or manual |
+| The listed videos teach what the tasks and the quiz rely on, without assuming material outside the course | Video notes from the transcripts | walkthrough |
 | Quiz answers and explanations appear only in the private source and the tool’s answer settings | `RESOURCES.md` visibility column | automated (search) |
 | The quiz link on the slides and in `RESOURCES.md` opens the quiz for this unit | The tool | manual |
 
