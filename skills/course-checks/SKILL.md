@@ -32,6 +32,7 @@ Course material fails quietly: a missing step, a renamed repository or a sample 
 | Paid features are marked, with the free alternative | Block 5 tool costs | manual |
 | Slides match the session plan and participant page (task wording, links, commands, deadlines) | Session plan, `RESOURCES.md` | automated (search) or manual |
 | Slide timing fits the plan (slides per input block vs. its minutes) | Session plan | manual |
+| Session plan blocks add up to the session length; quiz with discussion about 4 min per item, live demo twice its rehearsed time; one block marked to cut, homework before it | Session plan | automated (sum), manual (rest) |
 | No sample answer appears on a slide before the task it answers | Session plan order | manual |
 | The slide PDF in the handbook is the current deck, without speaker notes or hidden answer slides | Deck version, `RESOURCES.md` | manual |
 | Quiz questions cover only content learners met before the session | Previous unit’s material | walkthrough or manual |
