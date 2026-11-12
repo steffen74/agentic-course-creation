@@ -34,6 +34,7 @@ Course material fails quietly: a missing step, a renamed repository or a sample 
 | Slide timing fits the plan (slides per input block vs. its minutes) | Session plan | manual |
 | Session plan blocks add up to the session length; quiz with discussion about 4 min per item, live demo twice its rehearsed time; one block marked to cut, homework before it | Session plan | automated (sum), manual (rest) |
 | No sample answer appears on a slide before the task it answers | Session plan order | manual |
+| Every in-session task uses only what learners met before it (earlier units, or an input or demo earlier in the session); no slide or note presents later homework as already seen | Session plan, video notes, `RESOURCES.md` | manual (outline) or walkthrough |
 | The slide PDF in the handbook is the current deck, without speaker notes or hidden answer slides | Deck version, `RESOURCES.md` | manual |
 | Quiz questions cover only content learners met before the session | Previous unit’s material | walkthrough or manual |
 | The listed videos teach what the tasks and the quiz rely on, without assuming material outside the course | Video notes from the transcripts | walkthrough |
