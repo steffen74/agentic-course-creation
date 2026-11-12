@@ -6,7 +6,7 @@ The page follows the printed canvas: one column per `## Section` between `---` r
 Empty blocks show the template's hint and are marked as not decided (👤) or not drafted (🤖).
 
 With a decision log (DECISIONS.md next to the canvas, entries `## YYYY-MM-DD: title` with a line
-`- **Canvas:** 3, 5`), each block shows how many decisions touch it, and the decisions newer than the
+`**Canvas:** 3, 5` or `**Canvas block:** 3`), each block shows how many decisions touch it, and the decisions newer than the
 canvas version date, so a canvas that has fallen behind its log is visible.
 
   render_canvas.py COURSE-CANVAS.md                     # writes build/canvas.html
@@ -128,7 +128,7 @@ def parse_decisions(path):
         head, _, body = chunk.partition("\n")
         date = DATE.search(head)
         title = head.split(":", 1)[1].strip() if ":" in head else head.strip()
-        blocks = re.search(r"\*\*Canvas:\*\*\s*(.+)", body)
+        blocks = re.search(r"\*\*Canvas(?: blocks?)?:\*\*\s*(.+)", body)
         decisions.append({"date": date.group(0) if date else "", "title": title,
                           "blocks": set(re.findall(r"\d+", blocks.group(1))) if blocks else set()})
     return decisions
