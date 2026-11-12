@@ -25,7 +25,7 @@ Draft three to five questions for the unit, each with:
 - an explanation of one or two sentences, for the instructor to use in class.
 - a type: *video*, *task* or *skill*, with its source.
 
-Base questions on what the material actually says. When a question rests on a video you cannot read, mark it *from the title only* in the explanation; the instructor checks it against the video.
+Base questions on what the material actually says: use the course’s video notes where they exist (see `walk-through`). When a question rests on a video you cannot read, mark it *from the title only* in the explanation; the instructor checks it against the video.
 
 Show the questions and wait for the instructor. Then write them into the source.
 

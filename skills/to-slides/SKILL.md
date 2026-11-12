@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # To slides
 
-Build the slides for one unit. Read `COURSE-CANVAS.md`, `RESOURCES.md`, `DECISIONS.md`, the `## Agentic course creation` section of `AGENTS.md`, and the unit’s approved session plan and participant page. Slides are built from the plan, never the other way round: if the session plan is not approved yet, stop and suggest `/draft-unit`.
+Build the slides for one unit. Read `COURSE-CANVAS.md`, `RESOURCES.md`, `DECISIONS.md`, the `## Agentic course creation` section of `AGENTS.md`, and the unit’s approved session plan and participant page; load `assumed-knowledge`. Slides are built from the plan, never the other way round: if the session plan is not approved yet, stop and suggest `/draft-unit`.
 
 ## 1. Settle the format once
 
@@ -24,11 +24,13 @@ Write the answer as `- Slides: <format>, <deck location>, <outline location>, <p
 
 Write the outline to its file before any slide: a timing table (plan minutes, slides and minutes per slide for each block), then one entry per block of the session plan, in its order:
 
-- **Opening**: a cover and an agenda slide with the plan’s blocks and minutes, even though the plan does not list them.
+- **Opening**: a cover, an agenda slide with the plan’s blocks in the words learners use, without minutes, and a hidden timing slide with the clock time at which each block starts, for the instructor.
 
 - **Input block**: a section sized to its minutes (as a rule, one content slide per two to three minutes). List the claims each slide makes and where they come from: the session plan, its sample answers, the canvas, the participant page. Numbers come from the plan’s sample answers or are computed again; never invented. When the plan gives only a keyword (“scale types”), do not fill it from your own knowledge: mark the slide *content missing in the plan* and make it a decision.
 - **Group work**: one task slide with the task in the same wording as the participant page, the time box, the expected result, where to work (repository, data, starting notebook) and where to post or hand in. Load `learner-instructions`. If the participant page does not contain the task (in-session tasks often live only in the session plan), take the plan’s wording and flag it: the slide is then the only place learners see the task, and it is participant material whether or not the deck is published. Flag every task with more than one reasonable reading (for example “average” over days or over rows) as a decision.
+- **What each task needs**: for every group-work slide, list what the task needs (concepts, tools, clicks, accounts) and where learners met each: material assigned *before* this session, or a slide earlier in it. Homework assigned after the session does not count. When something is new in this session and applied right away, one concept slide is not enough: plan a live demo or worked example of the task’s exact steps, with a fallback slide, price it into the block’s minutes, and flag it as a decision.
 - **Plenary**: one slide with the question or the criteria for feedback. Content produced in the room (groups’ answers, charts) gets an empty frame to fill live.
+- **Timing**: check the plan’s minutes before building. A quiz with discussion takes about 4 minutes per item, closing questions included; a live demo takes twice its rehearsed time. The blocks add up to the session length, and one block is marked as the one to cut, with the homework before it. A plan that fails this is a decision for the instructor, not something to fix in the slides.
 - **Video check**: the quiz link from `RESOURCES.md` (and a QR code where the format allows), not the questions; answers and explanations in the speaker notes only. If the unit has no quiz yet, suggest `/to-quiz` first.
 - **Break, outlook**: one slide each; the outlook repeats the homework in the participant page’s wording.
 
@@ -40,10 +42,12 @@ End the outline with the decisions it needs (overloaded blocks, missing content,
 
 Build the deck in the settled format and template:
 
+- Name blocks by what learners do (“Quiz”, “Show your results”), not by teaching terms (“video check”, “gallery walk”).
 - A title on every slide that states its point (“Most forecast errors fall on public holidays”), not a topic (“Results”).
 - Little text; what the instructor says belongs in the speaker notes, taken from the session plan.
 - Only what the room needs at that moment of the session. Links to other units, outlooks, background and where to find things later go into the speaker notes; the homework and outlook slides are the exception, since that is their job.
 - Every link, repository name, command and deadline exactly as in its source of truth in `RESOURCES.md`.
+- Slides and notes refer to a video or reading by when learners meet it: material assigned after the session is “homework after this session”, never “the video covers …”.
 - Live demos get a fallback slide (a screenshot or the expected output) in case the demo fails.
 
 ## 4. Check and hand over
