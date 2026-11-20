@@ -25,6 +25,8 @@ Draft what the unit needs according to `RESOURCES.md`, each in its own location:
 - **Participant**: goals, tasks, deliverable, material with lengths. Load `learner-instructions`.
 - **Template or code**: notebooks, data, configuration the tasks rely on.
 
+Choose videos and readings from their transcripts or text, not their titles: write or reuse the video notes and ask for access to unreadable ones as in `walk-through`. A video that teaches something else, in another language, or with a setup the course does not use is a choice for the instructor.
+
 Compute sample answers by running the code on the course data, never from memory. Quote numbers with how they were computed.
 
 ## 3. Stop point
