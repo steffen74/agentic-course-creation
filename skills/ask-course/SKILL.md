@@ -22,4 +22,4 @@ Then recommend **one** next skill, with one sentence on why, based on the first 
 | A walkthrough is done, but the unit is not released | `/review-unit <unit>` |
 | A session just took place, or learners got stuck | `/course-retro` |
 
-If the user describes a situation instead, map it to the table. When two rows apply, recommend the earlier one, except that a unit whose session is within the next seven days goes first: then recommend `/walk-through` for that unit.
+If the user describes a situation instead, map it to the table. When two rows apply, recommend the earlier one, except that a unit whose session is within the next seven days goes first: then recommend the first missing step for that unit, in the order `/to-quiz`, `/to-slides`, `/walk-through`. A walkthrough before the slides exist cannot walk the in-session tasks, which live only on the task slides.
