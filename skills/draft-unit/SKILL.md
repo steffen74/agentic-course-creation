@@ -21,9 +21,11 @@ Load `assumed-knowledge`. A step whose need has no origin is a gap: resolve it n
 
 Draft what the unit needs according to `RESOURCES.md`, each in its own location:
 
-- **Instructor**: session plan with timings, input, group work, sample answers and discussion points. Write the input blocks as content (claims, numbers, examples) with speaker notes in mind; slides are built from them later by `/to-slides`.
+- **Instructor**: session plan with timings, input, group work, sample answers and discussion points. Timings follow what sessions really take: a quiz with discussion about 4 minutes per item, closing questions included; a live demo twice its rehearsed time (at least 5 minutes if not rehearsed); setup steps in a group task (accounts, repositories, cloning, sign-in, installs) get their own minutes. The blocks add up to the session length; mark one block as the one to cut and put the homework before it; it is never the activity the block exists for. A tool learners use in the homework is demonstrated live in the session before it, early enough not to be the block that gets cut. Write the input blocks as content (claims, numbers, examples) with speaker notes in mind; slides are built from them later by `/to-slides`.
 - **Participant**: goals, tasks, deliverable, material with lengths. Load `learner-instructions`.
 - **Template or code**: notebooks, data, configuration the tasks rely on.
+
+Choose videos and readings from their transcripts or text, not their titles: write or reuse the video notes and ask for access to unreadable ones as in `walk-through`. A video that teaches something else, in another language, or with a setup the course does not use is a choice for the instructor.
 
 Compute sample answers by running the code on the course data, never from memory. Quote numbers with how they were computed.
 

@@ -32,6 +32,8 @@ Not only concepts. Gaps come at least as often from:
 - A command works only from a specific folder, and the page does not say which.
 - A tool the step depends on is free in one plan and paid in another; the page assumes the paid one.
 - A task needs a concept that is scheduled for a later unit.
+- A video only reviews a concept and refers to a course the learners never took (“if this is new to you, revisit the previous course”).
+- The videos show a tool in a different interface (terminal, IDE panel, app, cloud) than the one used in class, and nothing says it is the same tool.
 
 ## Red flags in class
 
