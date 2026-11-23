@@ -12,6 +12,14 @@ One entry per decision, newest first. People decide; the agent proposes and reco
 - **Canvas:** block(s) affected
 -->
 
+## 2026-11-23: Self-study format, course folder and language in setup-course; release 0.3.0
+
+- **Context:** The test run on the self-study course of the Agentic Business Model Canvas (signals of 2026-11-23); the maintainer agreed to fix them before merging the recap and releasing.
+- **Decision:** `/setup-course` asks for folder, format, visibility and language; self-study pages carry exercise, reference solution and self-check; quizzes and slides can be `none`; expected answers come from a real run. Release as 0.3.0 together with the recap.
+- **Reason:** Without these, the course had to adapt paths, templates and the visibility rule by hand.
+- **Alternatives:** a separate skill for self-study courses (duplicates most of the flow).
+- **Canvas:** block 5 (tools), block 6 (checks)
+
 ## 2026-11-23: Weakest user, builder patterns, and the first test run after the recap
 
 - **Context:** Recap with the Agentic Skillset Builder (C1–C3).

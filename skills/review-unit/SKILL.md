@@ -17,7 +17,7 @@ Load `course-checks` and run every check that applies to a unit:
 - **Goals and evidence**: does the unit serve the goals `PLAN.md` assigns to it? Does the deliverable produce the evidence?
 - **Workload**: do the listed lengths add up, and is the unit within its planned hours?
 - **Consistency**: do repository names, links, commands, dates and skill names match the source of truth in `RESOURCES.md`, across instructor and participant files?
-- **Visibility**: no sample answers, session plans or quiz solutions in a participant-facing or public file.
+- **Visibility**: no sample answers, session plans or quiz solutions in a participant-facing or public file (in a public self-study course with solutions as part of the course: no learner data, and nothing about real people or organisations that the course should not publish).
 - **Correctness**: sample answers re-computed where the code exists; links resolve.
 - **Slides** (if the unit has a deck): the slide checks from `course-checks`. A deck older than the last change to its session plan is re-checked, not assumed current.
 

@@ -10,6 +10,8 @@ Write and publish the quiz for one unit. Read `COURSE-CANVAS.md`, `PLAN.md`, `RE
 
 ## 1. Tool and source
 
+If the line says `none` (for example a self-study course with self-checks on the pages), stop: say so and suggest writing the self-check questions with `/draft-unit`.
+
 `AGENTS.md` should have a line `- Quizzes: <source file>, tool <name>, connector <name|none>`, set in `/setup-course`. If it is missing, ask once, recommend, and write it:
 
 - **Source**: one file in the private course repository holds every question with options, correct answer and explanation (a CSV with the columns `session, type, question, option_a, option_b, option_c[, option_d], correct, explanation`, or Markdown that mirrors it). The quiz tool is a copy, never the source.

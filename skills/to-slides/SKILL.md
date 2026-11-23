@@ -10,6 +10,8 @@ Build the slides for one unit. Read `COURSE-CANVAS.md`, `RESOURCES.md`, `DECISIO
 
 ## 1. Settle the format once
 
+If `AGENTS.md` says `Slides: none` (for example a self-study course), stop: say so and suggest `/walk-through`.
+
 The format is normally settled in `/setup-course`. If `AGENTS.md` has no `Slides:` line, ask, leading with a recommendation from what exists (earlier decks, the tools in block 5):
 
 - **Format and tool**: for example a claude.ai Slides artifact, `.pptx`, Google Slides, Markdown slides (Marp, reveal.js).

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- `/setup-course` asks for the course folder (a course can live in `course/` of another repository), the format (sessions or self-study), the visibility rule that fits it, and the course language (templates are translated, structure kept). The `AGENTS.md` section gets `Format:` and `Language:` lines and paths with the folder.
+- Self-study courses: `/draft-unit` writes pages with exercise, reference solution and self-check instead of a session plan; `/to-quiz` and `/to-slides` stop when the course has none. In a public self-study course, solutions are part of the course and the visibility checks look for learner data instead.
+- `/draft-unit` takes scripted replies and expected answers from a real run of the tool learners use; new walk-through check that they match the current tool.
 - Patterns from the Agentic Skillset Builder: `/grill-course` and `/draft-unit` ask for the instructor's words first and keep rounds short; `/to-quiz` and `/course-retro` copy input pasted in chat into the files; `/map-resources`, `/to-course-plan`, `/walk-through` and `/review-unit` present decisions in batches of at most five; every writing skill offers a commit; `/setup-course` creates `CLAUDE.md`; `/course-retro` writes skill proposals to `SKILL-PROPOSALS.md`.
 - Adopted the core of the Agentic Skillset Builder (`.skillset-core.json`): `render_canvas.py` with `--print`/`--pdf` (HTML output unchanged), `scripts/check_skillset.py`, maintainer skill `release-skillset`. The printed canvas is now generated from `COURSE-CANVAS.md` (its prompts moved into `print:` lines), so the template is the single source of the canvas.
 - `/show-canvas` also counts decisions logged with `**Canvas block:**` (the decision log format of Agentic Data Science).

@@ -25,7 +25,7 @@ Compare the occurrences of each shared fact. Report:
 
 - **Conflicts**: two places say different things (a different repository, command, deadline or number).
 - **Orphans**: a resource nobody links to, or a link to something that does not exist.
-- **Leaks**: instructor content (sample answers, session plans, quiz solutions, signals) in a public location. Report these first, as blocking.
+- **Leaks**: instructor content (sample answers, session plans, quiz solutions, signals) in a public location. Report these first, as blocking. Exception: a public self-study course whose `DECISIONS.md` makes solutions part of the course; there, learner data in a public location is the leak.
 - **Missing per unit**: a unit with a plan but no participant page, or a page without the template or data it refers to.
 
 ## 3. Stop point: decisions

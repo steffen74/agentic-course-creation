@@ -11,6 +11,13 @@ Everything that shows how the work is going: dry runs and checks before somethin
 - **Status:** open | fixed in <commit/file> | turned into check <name>
 -->
 
+## 2026-11-23 · draft-unit, walk-through · walk-throughs of the self-study course (Agentic Business Model Canvas)
+
+- **What happened:** Walk-throughs of all six units found scripted learner replies that no longer matched the skills the learners run (a rejected recommendation the skill no longer makes, dates in the past, a rule worded differently), and workload overruns of 20–35 minutes in three units. Fixed by a second reference run and taking every scripted reply from it.
+- **Who:** walk-through personas (weakest learner, experienced learner)
+- **Severity:** friction
+- **Status:** turned into the `draft-unit` rule “expected answers from a real run” and the walkthrough check on scripted replies
+
 ## 2026-11 · to-slides, to-quiz, review-unit, walk-through · real course (reconstructed from CHANGELOG)
 
 - **What happened:** first test runs on a real course led to: `walk-through` reads the tools learners invoke and checks data against task claims; `to-slides` keeps slides to what the room needs; `to-quiz` gets a house style; `review-unit` asks decisions as multiple-choice questions with their own context (questions without background left the instructor guessing).
@@ -23,4 +30,4 @@ Everything that shows how the work is going: dry runs and checks before somethin
 - **What happened:** (1) `/setup-course` assumes the course repository root; the course lives in `course/` of a skillset repository, so planning went to `course/planning/` and the `AGENTS.md` paths were adapted by hand. (2) No mechanism for a course language other than English: templates were translated by hand (German). (3) A self-study course has no sessions, quiz tool or slides; `/to-quiz` and `/to-slides` do not apply, self-check questions live on the pages, and the template columns for slides and quizzes are unused. (4) "Instructor content must stay private" does not fit a public self-study course where solutions are part of the course; recorded as a decision. (5) The skillset repo's `check_skillset.py` flagged the course's commands as unknown skills (fixed in builder core 0.1.4).
 - **Who:** maintainer
 - **Severity:** friction
-- **Status:** open – to address after the course: `setup-course` asks for the course folder and language; a "self-study" format with self-checks instead of quizzes/slides; visibility rule for public self-study courses.
+- **Status:** (1)–(4) fixed in `setup-course`, `draft-unit`, `to-quiz`, `to-slides`, `course-checks`, `map-resources`, `review-unit`; (5) fixed in builder core 0.1.4.

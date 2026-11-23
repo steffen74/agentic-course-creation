@@ -24,7 +24,8 @@ Course material fails quietly: a missing step, a renamed repository or a sample 
 | Every object a step refers to (repository, file, room, account) has a creation step or a link | Earlier steps, `RESOURCES.md` | walkthrough |
 | Workload per unit adds up and is within plan | Listed lengths, block 5 budget | automated |
 | Shared facts match their source of truth | `RESOURCES.md` source-of-truth table | automated (search) |
-| No instructor content in public locations | `RESOURCES.md` visibility column | automated (search for markers such as “sample answer”, “instructor notes”) |
+| No instructor content in public locations (in a public self-study course whose `DECISIONS.md` makes solutions part of the course: no learner data instead) | `RESOURCES.md` visibility column, `DECISIONS.md` | automated (search for markers such as “sample answer”, “instructor notes”) |
+| Scripted replies and expected answers in tasks match the current tool (an agent, a skill, a program) | a fresh run of the tool | walkthrough |
 | Links resolve | The web | automated |
 | Setup works from scratch on each supported system | A clean machine or container per system | walkthrough or manual |
 | Sample answers match the current data | Running the code | automated |

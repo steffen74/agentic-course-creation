@@ -1,6 +1,6 @@
 ---
 name: draft-unit
-description: Draft the resources for one unit (instructor session plan, participant page, template or code changes) from the course plan, writing the learner's expected path before the content. Type the unit after the command.
+description: Draft the resources for one unit (instructor session plan or, for self-study, the page with exercise and self-check; participant page; template or code changes) from the course plan, writing the learner's expected path before the content. Type the unit after the command.
 disable-model-invocation: true
 ---
 
@@ -24,6 +24,10 @@ Draft what the unit needs according to `RESOURCES.md`, each in its own location:
 - **Instructor**: session plan with timings, input, group work, sample answers and discussion points. Write the input blocks as content (claims, numbers, examples) with speaker notes in mind; slides are built from them later by `/to-slides`.
 - **Participant**: goals, tasks, deliverable, material with lengths. Load `learner-instructions`.
 - **Template or code**: notebooks, data, configuration the tasks rely on.
+
+In a **self-study** course (see `Format:` in `AGENTS.md`) there is no session plan: the participant page carries the input, the exercise with its start state, a reference solution to compare with and self-check questions with a collapsible answer; the learner path goes into the planning folder (for example `PLAN.md`) instead of session notes.
+
+When a task has learners use a tool that answers them (an agent, a skill, a program), take the expected answers and scripted replies from a real run of that tool, not from memory, and note which run. After the tool changes, re-run before the page is released; drift between page and tool is the most common walk-through finding.
 
 Compute sample answers by running the code on the course data, never from memory. Quote numbers with how they were computed.
 
