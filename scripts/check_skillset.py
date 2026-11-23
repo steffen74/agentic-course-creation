@@ -24,7 +24,8 @@ ROOT = pathlib.Path.cwd()
 SECTION = "## Agentic skillset builder"
 # Agent built-in commands and placeholders that are not skills.
 BUILTIN = {"mcp", "help", "clear", "compact", "config", "init", "model", "plugin", "plugins", "agents", "permissions",
-           "memory", "review", "skills", "status", "login", "logout", "command", "skill", "name"}
+           "memory", "review", "skills", "status", "login", "logout", "command", "skill", "name",
+           "connect", "models", "doctor", "reload-plugins", "resume", "exit"}
 # Skills of the Agentic Skillset Builder: skillset repos refer to them in design/, AGENTS.md and the release skill.
 BUILDER_SKILLS = {"setup-skillset", "ask-builder", "grill-practice", "map-sources", "design-canvas", "to-skill-map",
                   "draft-skill", "dry-run", "review-skillset", "skillset-retro", "sync-core", "show-canvas"}
