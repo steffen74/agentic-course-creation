@@ -20,7 +20,9 @@ It reads `DECISIONS.md` next to the canvas when it exists (`--decisions <file>` 
 
 With **live** after the command, add `--watch` and start it as a background process: it re-renders whenever the canvas or the decision log changes, and the open page reloads itself every few seconds. Tell the user how to stop it.
 
-Done when the page exists and the user has its path (or it is open in a browser pane, if your agent has one).
+If `python3` is not available, say so in one sentence, show the canvas file itself instead (its blocks in order, empty ones marked), and offer to help install Python 3.
+
+Done when the page exists and the user has its path (or it is open in a browser pane, if your agent has one), or the canvas was shown as text because Python is missing.
 
 ## 2. Point out what the page shows
 
