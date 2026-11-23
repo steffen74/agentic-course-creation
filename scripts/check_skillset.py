@@ -7,6 +7,7 @@ Checks:
   plugin-list    every skills/**/SKILL.md is listed in .claude-plugin/plugin.json, and every listed path exists
   frontmatter    every SKILL.md has name (equal to its folder) and description; descriptions fit the 1024-char limit
   skill-refs     every `/skill-name` written in backticks in Markdown names a skill of this repo or of the builder
+                 (folders named in the AGENTS.md line "- Other skillsets in: `path/`" are skipped)
   agents         AGENTS.md has a `## Agentic skillset builder` section with Language, Canvas template, Printed canvas
   printed-canvas the printed canvas SVG was made from the current canvas template
   core           verbatim core files listed in .skillset-core.json are unchanged since the last sync
@@ -107,10 +108,13 @@ def main():
             problems.append(f"{rel}: description longer than 1024 characters")
     report("frontmatter", not problems, "; ".join(problems) or f"{len(skills)} skills ok")
 
-    # skill-refs
+    # skill-refs (folders listed in the AGENTS line "Other skillsets in" use another skillset's commands)
+    other = [ROOT / p for p in re.findall(r"`([^`]+)`", (agents_section() or {}).get("other skillsets in", ""))]
     unknown = {}
     for md in ROOT.rglob("*.md"):
         if any(part in (".git", "node_modules", "build") for part in md.parts):
+            continue
+        if any(o in md.parents for o in other):
             continue
         for ref in re.findall(r"`/([a-z][a-z0-9-]*)(?=[\s`])", md.read_text(encoding="utf-8")):
             if ref not in names | BUILDER_SKILLS | BUILTIN:
