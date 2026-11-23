@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- `/to-slides`: the first slide of each block names its minutes in its kicker, and once the deck exists those minutes are the timing source (instructors edit them on the slides). New script `scripts/deck_timing.py` adds them up for a deck stored as files, fails when they exceed the session length and rewrites the hidden timing slide with `--write-timing`; `course-checks` lists it. Presenter cues such as click counts go into the speaker notes. Feedback from a real course: minutes drifted between deck, timing slide and session plan while the instructor edited the deck.
+
 ## 0.3.0 – 2026-11-23
 
 - `/setup-course` asks for the course folder (a course can live in `course/` of another repository), the format (sessions or self-study), the visibility rule that fits it, and the course language (templates are translated, structure kept). The `AGENTS.md` section gets `Format:` and `Language:` lines and paths with the folder.

@@ -47,10 +47,11 @@ Build the deck in the settled format and template:
 - Only what the room needs at that moment of the session. Links to other units, outlooks, background and where to find things later go into the speaker notes; the homework and outlook slides are the exception, since that is their job.
 - Every link, repository name, command and deadline exactly as in its source of truth in `RESOURCES.md`.
 - Live demos get a fallback slide (a screenshot or the expected output) in case the demo fails.
+- Minutes on the slides: the first slide of each block names its minutes in its kicker (`Group work · 20 minutes`); the slides after it belong to that block. Instructors edit minutes on the slides, so once the deck exists these are the timing source; a presenter cue like a click count goes into the speaker notes, never onto the slide.
 
 ## 4. Check and hand over
 
-Run the slide checks from `course-checks` (consistency with plan and participant page, timing, no early sample answers, links). Fix what fails, then show the deck with a list of the slides you were unsure about.
+Run the slide checks from `course-checks` (consistency with plan and participant page, timing, no early sample answers, links). For a deck stored as files, run [`scripts/deck_timing.py`](scripts/deck_timing.py) on a fresh copy after every change to the deck, also after the instructor edited it: it adds up the minutes on the slides, fails when they exceed the session length and, with `--write-timing`, rewrites the hidden timing slide from them. Then bring the session plan and the outline in line with the slides. Fix what fails, then show the deck with a list of the slides you were unsure about.
 
 Decks are mirrors: they repeat facts from the session plan and the participant page, including their gaps. Add each deck to the mirrors of those facts in `RESOURCES.md`, so a fix to a page also reaches the decks that repeat it.
 
