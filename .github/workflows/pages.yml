@@ -1,0 +1,42 @@
+# Website of this skillset on GitHub Pages (core of the Agentic Skillset Builder; do not edit here).
+# Builds README, course, canvas guide and docs with MkDocs Material. Switch on in the repository settings:
+# Settings → Pages → Source: GitHub Actions (only once the repository is public, or on a plan with Pages for private repos).
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install mkdocs-material
+      - run: python3 scripts/build_site.py
+      - run: mkdocs build -f build/mkdocs.yml
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
