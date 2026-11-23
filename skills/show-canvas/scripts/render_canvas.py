@@ -1,30 +1,58 @@
 #!/usr/bin/env python3
-"""Render a canvas file (COURSE-CANVAS.md, or CANVAS.md of Agentic Data Science) as one HTML page.
+"""Render a canvas file (the canvas of any agentic skillset) as an HTML page, or as a printable A4 SVG/PDF.
 
-The page follows the printed canvas: one column per `## Section` between `---` rules, one card per
-`### N. Block 👤|🤖`, then the sections after the last rule (open questions, decision log) below.
-Empty blocks show the template's hint and are marked as not decided (👤) or not drafted (🤖).
+Canvas grammar: `# Title`, header fields `**Field:** value`, an owner legend `> Owners: 👤 … · 🤖 …`,
+columns as `## Section` between `---` rules, blocks as `### N. Block 👤|🤖`, and sections after the last
+rule (open questions, decision log) below the grid. HTML comments in a block are its hint; a comment
+`<!-- print: first line | second line -->` holds the two short prompts of the printed canvas.
 
-With a decision log (DECISIONS.md next to the canvas, entries `## YYYY-MM-DD: title` with a line
-`**Canvas:** 3, 5` or `**Canvas block:** 3`), each block shows how many decisions touch it, and the decisions newer than the
-canvas version date, so a canvas that has fallen behind its log is visible.
+Page mode (default): one card per block. Empty blocks show their hint and are marked as not decided (👤)
+or not drafted (🤖). With a decision log (DECISIONS.md next to the canvas, entries `## YYYY-MM-DD: title`
+with a line `**Canvas:** 3, 5` or `**Canvas block:** 3`), each block shows how many decisions touch it and
+those newer than the canvas version date.
 
-  render_canvas.py COURSE-CANVAS.md                     # writes build/canvas.html
-  render_canvas.py CANVAS.md --out build/canvas.html --decisions DECISIONS.md
-  render_canvas.py COURSE-CANVAS.md --watch             # re-render on every change; the page reloads itself
+Print mode (--print): the blank canvas as an A4 landscape SVG, from the template. --pdf also prints it to
+PDF with a local Chrome or Chromium. The SVG records the hash of the template it was made from, so a check
+can tell when the printed canvas is out of date.
+
+  render_canvas.py CANVAS.md                                   # writes build/canvas.html
+  render_canvas.py CANVAS.md --out build/canvas.html --decisions DECISIONS.md --lang de
+  render_canvas.py CANVAS.md --watch                           # re-render on every change; the page reloads itself
+  render_canvas.py templates/CANVAS.md --print --out canvas/x-canvas.svg --pdf canvas/x-canvas.pdf \\
+      --subtitle "One line under the title" --footer "X Canvas v0.1 · CC BY 4.0 · github.com/…"
 
 Standard library only.
 """
 import argparse
 import datetime
+import hashlib
 import html
+import os
 import pathlib
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
+import textwrap
 import time
 
 OWNERS = {"👤": "human", "🤖": "agent"}
 DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
+PRINT = re.compile(r"<!--\s*print:(.*?)-->", re.S | re.I)
+
+LABELS = {
+    "en": {"decides": "{role} decides", "drafts": "Agent drafts", "approves": "Agent drafts, {role} approves",
+           "role": "human", "not_decided": "Not decided yet", "not_drafted": "Not drafted yet",
+           "filled": "{n} of {total} blocks filled", "version": "version", "decision": "decision",
+           "decisions": "decisions", "newer": "newer than the canvas", "new": "new", "nothing": "Nothing yet.",
+           "older": "{n} older decisions in the log.", "rendered": "Rendered from"},
+    "de": {"decides": "{role} entscheidet", "drafts": "Agent entwirft", "approves": "Agent entwirft, {role} bestätigt",
+           "role": "Mensch", "not_decided": "Noch nicht entschieden", "not_drafted": "Noch nicht entworfen",
+           "filled": "{n} von {total} Blöcken ausgefüllt", "version": "Version", "decision": "Entscheidung",
+           "decisions": "Entscheidungen", "newer": "neuer als das Canvas", "new": "neu", "nothing": "Noch nichts.",
+           "older": "{n} ältere Entscheidungen im Log.", "rendered": "Erzeugt aus"},
+}
 
 
 def inline(text):
@@ -70,8 +98,21 @@ def markdown(lines):
 
 
 def strip_comments(text):
+    """Return (text without comments, hint, print lines)."""
+    prints = [p.strip() for m in PRINT.findall(text) for p in m.split("|") if p.strip()]
+    text = PRINT.sub("", text)
     hints = [h.strip() for h in re.findall(r"<!--(.*?)-->", text, re.S)]
-    return re.sub(r"<!--.*?-->", "", text, flags=re.S), " ".join(hints)
+    return re.sub(r"<!--.*?-->", "", text, flags=re.S), " ".join(hints), prints
+
+
+def parse_legend(legend):
+    """'👤 instructor decides · 🤖 agent drafts, instructor approves' -> labels for both owners."""
+    parts = {}
+    for part in re.split(r"\s+·\s+", legend):
+        for emoji, owner in OWNERS.items():
+            if part.strip().startswith(emoji):
+                parts[owner] = part.strip()[len(emoji):].strip().rstrip(".")
+    return parts
 
 
 def parse_canvas(text):
@@ -112,17 +153,18 @@ def parse_canvas(text):
         tail.insert(0, groups.pop())
     for g in groups + tail:
         for b in g["blocks"]:
-            body, b["hint"] = strip_comments("\n".join(b["lines"]))
+            body, b["hint"], b["print"] = strip_comments("\n".join(b["lines"]))
             b["html"], b["empty"] = markdown(body.splitlines()), not body.strip()
-        body, g["hint"] = strip_comments("\n".join(g["lines"]))
+        body, g["hint"], g["print"] = strip_comments("\n".join(g["lines"]))
         g["html"], g["empty"] = markdown(body.splitlines()), not body.strip()
-    return {"title": title, "fields": fields, "legend": legend, "columns": groups, "tail": tail}
+    return {"title": title, "fields": fields, "legend": legend, "owners": parse_legend(legend),
+            "columns": groups, "tail": tail}
 
 
 def parse_decisions(path):
     if not path or not path.exists():
         return []
-    text, _ = strip_comments(path.read_text(encoding="utf-8"))
+    text = strip_comments(path.read_text(encoding="utf-8"))[0]
     decisions = []
     for chunk in re.split(r"^## ", text, flags=re.M)[1:]:
         head, _, body = chunk.partition("\n")
@@ -136,59 +178,75 @@ def parse_decisions(path):
 
 def version_date(fields):
     for key, value in fields:
-        if key.lower() in ("version", "updated", "last update") and (m := DATE.search(value)):
+        if key.lower() in ("version", "updated", "last update", "stand") and (m := DATE.search(value)):
             return m.group(0)
     return ""
 
 
-def card(b, decisions, since, decider):
+def labels_for(canvas, lang):
+    """Badge and legend texts: from the canvas's own owner legend where it has one."""
+    L = dict(LABELS.get(lang, LABELS["en"]))
+    role = L["role"]
+    if "instructor" in canvas["legend"]:      # Agentic Course Creation canvases before the legend parser
+        role = "instructor"
+    human = canvas["owners"].get("human") or L["decides"].format(role=role)
+    agent = canvas["owners"].get("agent") or L["approves"].format(role=role)
+    return L, human[:1].upper() + human[1:], agent[:1].upper() + agent[1:]
+
+
+def card(b, decisions, since, L, human):
     touching = [d for d in decisions if b["number"] in d["blocks"]]
     newer = [d for d in touching if since and d["date"] > since]
     owner = b["owner"] or "human"
-    badge = {"human": f"{decider.capitalize()} decides", "agent": "Agent drafts"}[owner]
+    badge = human if owner == "human" else L["drafts"]
     state = ""
     if b["empty"]:
-        state = '<p class="state">' + ("Not decided yet" if owner == "human" else "Not drafted yet") + "</p>"
+        state = '<p class="state">' + (L["not_decided"] if owner == "human" else L["not_drafted"]) + "</p>"
     meta = []
     if touching:
-        meta.append(f'{len(touching)} decision{"s" if len(touching) != 1 else ""}')
+        meta.append(f'{len(touching)} {L["decision"] if len(touching) == 1 else L["decisions"]}')
     if newer:
         titles = "&#10;".join(html.escape(f'{d["date"]}: {d["title"]}') for d in newer)
-        meta.append(f'<span class="newer" title="{titles}">{len(newer)} newer than the canvas</span>')
+        meta.append(f'<span class="newer" title="{titles}">{len(newer)} {L["newer"]}</span>')
     hint = f' title="{html.escape(b["hint"])}"' if b["hint"] else ""
     body = b["html"] if not b["empty"] else f'<p class="hint">{html.escape(b["hint"])}</p>'
     return f"""<section class="block {owner}{' empty' if b['empty'] else ''}"{hint}>
-  <header><h3><span class="num">{b['number']}</span> {inline(b['name'])}</h3><span class="badge">{badge}</span></header>
+  <header><h3><span class="num">{b['number']}</span> {inline(b['name'])}</h3><span class="badge">{html.escape(badge)}</span></header>
   {state}<div class="body">{body}</div>
   {'<footer>' + ' · '.join(meta) + '</footer>' if meta else ''}
 </section>"""
 
 
-def render(canvas, decisions, source, watch):
+def is_log(section):
+    name = section["name"].lower()
+    return "decision" in name or "entscheid" in name
+
+
+def render(canvas, decisions, source, watch, lang):
     since = version_date(canvas["fields"])
-    decider = "instructor" if "instructor" in canvas["legend"] else "human"
+    L, human, agent = labels_for(canvas, lang)
     rows = max((len(c["blocks"]) for c in canvas["columns"]), default=1)
     columns = []
     for c in canvas["columns"]:
         cards = []
         for i, b in enumerate(c["blocks"]):
             span = rows - i if i == len(c["blocks"]) - 1 else 1   # the last block fills its column
-            cards.append(f'<div style="grid-row: span {span}">{card(b, decisions, since, decider)}</div>')
+            cards.append(f'<div style="grid-row: span {span}">{card(b, decisions, since, L, human)}</div>')
         columns.append(f'<div class="column"><h2>{inline(c["name"])}</h2>'
                        f'<div class="cards" style="grid-template-rows: repeat({rows}, auto)">{"".join(cards)}</div></div>')
 
     tail = []
     for t in canvas["tail"]:
-        if "decision" in t["name"].lower() and decisions:
+        if is_log(t) and decisions:
             items = "".join(
                 f'<li><time>{d["date"]}</time> {inline(d["title"])}'
                 f'{" <span class=blocks>" + ", ".join(sorted(d["blocks"], key=int)) + "</span>" if d["blocks"] else ""}'
-                f'{" <span class=newer>new</span>" if since and d["date"] > since else ""}</li>'
+                f'{" <span class=newer>" + L["new"] + "</span>" if since and d["date"] > since else ""}</li>'
                 for d in decisions[:8])
-            more = f'<p class="hint">{len(decisions) - 8} older decisions in the log.</p>' if len(decisions) > 8 else ""
+            more = f'<p class="hint">{L["older"].format(n=len(decisions) - 8)}</p>' if len(decisions) > 8 else ""
             body = f"<ul class=log>{items}</ul>{more}"
         elif t["empty"]:
-            body = f'<p class="hint">{html.escape(t["hint"]) or "Nothing yet."}</p>'
+            body = f'<p class="hint">{html.escape(t["hint"]) or L["nothing"]}</p>'
         else:
             body = t["html"]
         tail.append(f'<section class="note"><h3>{inline(t["name"])}</h3>{body}</section>')
@@ -199,21 +257,21 @@ def render(canvas, decisions, source, watch):
     stamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     refresh = '<meta http-equiv="refresh" content="3">' if watch else ""
     return f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">{refresh}
+<html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">{refresh}
 <title>{html.escape(canvas['title'])}</title>
 <style>{CSS}</style></head>
 <body>
 <header class="top">
   <div><h1>{inline(canvas['title'])}</h1>
-  <p class="sub">{filled} of {total} blocks filled{' · version ' + since if since else ''}</p></div>
+  <p class="sub">{L['filled'].format(n=filled, total=total)}{' · ' + L['version'] + ' ' + since if since else ''}</p></div>
   <dl>{fields}</dl>
 </header>
 <main class="grid" style="grid-template-columns: repeat({len(columns)}, minmax(0, 1fr))">{''.join(columns)}</main>
 <div class="tail">{''.join(tail)}</div>
 <footer class="legend">
-  <span><i class="sw human"></i>{decider.capitalize()} decides</span>
-  <span><i class="sw agent"></i>Agent drafts, {decider} approves</span>
-  <span class="src">Rendered from <code>{html.escape(source.name)}</code> · {stamp}</span>
+  <span><i class="sw human"></i>{html.escape(human)}</span>
+  <span><i class="sw agent"></i>{html.escape(agent)}</span>
+  <span class="src">{L['rendered']} <code>{html.escape(source.name)}</code> · {stamp}</span>
 </footer>
 </body></html>
 """
@@ -269,25 +327,175 @@ blockquote { margin: 6px 0; padding-left: 8px; border-left: 3px solid var(--rule
 """
 
 
-def build(source, out, decisions_path, watch):
-    canvas = parse_canvas(source.read_text(encoding="utf-8"))
+# ---------------------------------------------------------------- print mode (A4 landscape SVG)
+
+W, H, M = 1188, 840, 30                 # viewBox in px at 4 px/mm; margin
+COL = {"human": ("#EEEDFE", "#534AB7", "#3C3489"), "agent": ("#E1F5EE", "#0F6E56", "#085041")}
+
+
+def esc(s):
+    return html.escape(s, quote=True)
+
+
+def badge_width(text):
+    return round(len(text) * 6.0 + 22)
+
+
+def wrap(text, width):
+    return textwrap.wrap(text, width) if text else []
+
+
+def svg(canvas, source_text, subtitle, footer, lang):
+    L, human, agent = labels_for(canvas, lang)
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 {W} {H}" '
+           f'font-family="Helvetica, Arial, sans-serif">',
+           f'<title>{esc(canvas["title"])}</title>',
+           f'<desc>template-sha256:{hashlib.sha256(source_text.encode("utf-8")).hexdigest()[:12]}</desc>',
+           f'<rect x="0" y="0" width="{W}" height="{H}" fill="#FFFFFF"/>',
+           f'<text x="{M}" y="58" font-size="26" font-weight="700" fill="#2C2C2A">{esc(canvas["title"])}</text>']
+    if subtitle:                               # shrink a long subtitle so it stays left of the header fields
+        sub_size = 13 if len(subtitle) * 6.6 <= 590 else max(9, round(13 * 590 / (len(subtitle) * 6.6), 1))
+        out.append(f'<text x="{M}" y="82" font-size="{sub_size}" fill="#5F5E5A">{esc(subtitle)}</text>')
+
+    # Header fields as labelled lines on the right, at most three (Version is printed in the footer).
+    fields = [k for k, _ in canvas["fields"] if k.lower() not in ("version", "stand")][:3]
+    x, right = 640, W - M
+    slot = (right - x) / max(len(fields), 1)
+    for i, name in enumerate(fields):
+        fx = x + i * slot
+        out.append(f'<text x="{fx:.0f}" y="50" font-size="11" fill="#5F5E5A">{esc(name)}</text>'
+                   f'<line x1="{fx:.0f}" y1="78" x2="{fx + slot - 30:.0f}" y2="78" stroke="#B4B2A9" stroke-width="1"/>')
+
+    cols = canvas["columns"]
+    gap = 18
+    cw = (W - 2 * M - gap * (len(cols) - 1)) / max(len(cols), 1)
+    top, tail_h = 125, (80 if canvas["tail"] else 0)
+    bottom = H - 50 - (tail_h + 16 if tail_h else 0)
+    rows = max((len(c["blocks"]) for c in cols), default=1)
+    bh = (bottom - top - 12 * (rows - 1)) / rows
+    chars = int(cw / 6.4)
+    for ci, c in enumerate(cols):
+        cx = M + ci * (cw + gap)
+        out.append(f'<text x="{cx:.0f}" y="112" font-size="15" font-weight="700" fill="#2C2C2A">{esc(c["name"])}</text>')
+        for i, b in enumerate(c["blocks"]):
+            owner = b["owner"] or "human"
+            fill, line, ink = COL[owner]
+            y = top + i * (bh + 12)
+            h = bottom - y if i == len(c["blocks"]) - 1 else bh
+            text = human if owner == "human" else L["drafts"]
+            text = text[:1].lower() + text[1:] if lang == "en" else text
+            bw = badge_width(text)
+            out.append(f'<rect x="{cx:.0f}" y="{y:.0f}" width="{cw:.0f}" height="{h:.0f}" rx="8" fill="{fill}" stroke="{line}" stroke-width="1"/>')
+            title = f'{b["number"]}  {b["name"]}'
+            room = cw - bw - 34                       # space left of the badge
+            size = 17 if len(title) * 9.0 <= room else max(11, int(17 * room / (len(title) * 9.0)))
+            out.append(f'<text x="{cx + 14:.0f}" y="{y + 26:.0f}" font-size="{size}" font-weight="700" fill="{ink}">'
+                       f'{esc(b["number"])}  {esc(b["name"])}</text>')
+            out.append(f'<rect x="{cx + cw - 10 - bw:.0f}" y="{y + 11:.0f}" width="{bw}" height="20" rx="10" fill="#FFFFFF" stroke="{line}" stroke-width="0.8"/>'
+                       f'<text x="{cx + cw - 10 - bw / 2:.1f}" y="{y + 25:.0f}" font-size="11" text-anchor="middle" fill="{ink}">{esc(text)}</text>')
+            prompts = b["print"]
+            if not prompts:
+                lines = wrap(b["hint"], chars)
+                prompts = lines[:2]
+                if len(lines) > 2:
+                    prompts[-1] = prompts[-1].rstrip(" ,;") + " …"
+            for k, p in enumerate(prompts[:int((h - 40) // 16)]):
+                out.append(f'<text x="{cx + 14:.0f}" y="{y + 48 + 16 * k:.0f}" font-size="11.5" fill="{line}">{esc(p)}</text>')
+
+    if canvas["tail"]:
+        n = len(canvas["tail"])
+        tw = (W - 2 * M - gap * (n - 1)) / n
+        ty = bottom + 16
+        for i, t in enumerate(canvas["tail"]):
+            tx = M + i * (tw + gap)
+            prompt = (t["print"] or wrap(t["hint"], int(tw / 6.4)))[:1]
+            out.append(f'<rect x="{tx:.0f}" y="{ty:.0f}" width="{tw:.0f}" height="{tail_h}" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1"/>'
+                       f'<text x="{tx + 14:.0f}" y="{ty + 24:.0f}" font-size="15" font-weight="700" fill="#444441">{esc(t["name"])}</text>'
+                       + "".join(f'<text x="{tx + 14:.0f}" y="{ty + 42:.0f}" font-size="11.5" fill="#5F5E5A">{esc(p)}</text>' for p in prompt))
+
+    ly = H - 38
+    hw = round(len(human) * 6.3) + 60
+    out.append(f'<rect x="{M}" y="{ly}" width="14" height="14" rx="3" fill="{COL["human"][0]}" stroke="{COL["human"][1]}"/>'
+               f'<text x="{M + 20}" y="{ly + 11}" font-size="11.5" fill="#2C2C2A">{esc(human)}</text>'
+               f'<rect x="{M + hw}" y="{ly}" width="14" height="14" rx="3" fill="{COL["agent"][0]}" stroke="{COL["agent"][1]}"/>'
+               f'<text x="{M + hw + 20}" y="{ly + 11}" font-size="11.5" fill="#2C2C2A">{esc(agent)}</text>')
+    if footer:
+        out.append(f'<text x="{W - M}" y="{ly + 11}" font-size="10.5" text-anchor="end" fill="#5F5E5A">{esc(footer)}</text>')
+    out.append("</svg>")
+    return "\n".join(out) + "\n"
+
+
+def find_browser():
+    candidates = [os.environ.get("CHROME"), "google-chrome", "google-chrome-stable", "chromium", "chromium-browser",
+                  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"]
+    candidates += sorted(str(p) for p in pathlib.Path("/opt/pw-browsers").glob("chromium-*/chrome-linux*/chrome"))
+    for c in candidates:
+        if c and (shutil.which(c) or pathlib.Path(c).exists()):
+            return shutil.which(c) or c
+    return None
+
+
+def to_pdf(svg_path, pdf_path):
+    browser = find_browser()
+    if not browser:
+        sys.exit("No Chrome or Chromium found for --pdf (set CHROME=/path/to/chrome). The SVG was written.")
+    page = ('<!doctype html><meta charset="utf-8"><style>@page{size:297mm 210mm;margin:0}'
+            'html,body{margin:0}img{width:297mm;height:210mm;display:block}</style>'
+            f'<img src="{svg_path.resolve().as_uri()}">')
+    with tempfile.TemporaryDirectory() as tmp:
+        wrapper = pathlib.Path(tmp) / "canvas.html"
+        wrapper.write_text(page, encoding="utf-8")
+        pdf_path.parent.mkdir(parents=True, exist_ok=True)
+        subprocess.run([browser, "--headless=new", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer",
+                        f"--user-data-dir={tmp}/profile", f"--print-to-pdf={pdf_path.resolve()}", wrapper.as_uri()],
+                       check=True, capture_output=True, timeout=120)
+
+
+# ---------------------------------------------------------------- main
+
+def load(source):
+    text = source.read_text(encoding="utf-8")
+    canvas = parse_canvas(text)
     if not canvas["columns"]:
         sys.exit(f"No blocks found in {source}: expected '## Section' and '### N. Block 👤|🤖' headings.")
+    return text, canvas
+
+
+def build(source, out, decisions_path, watch, lang):
+    _, canvas = load(source)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(render(canvas, parse_decisions(decisions_path), source, watch), encoding="utf-8")
+    out.write_text(render(canvas, parse_decisions(decisions_path), source, watch, lang), encoding="utf-8")
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     p.add_argument("canvas", type=pathlib.Path)
-    p.add_argument("--out", type=pathlib.Path, default=pathlib.Path("build/canvas.html"))
+    p.add_argument("--out", type=pathlib.Path, help="default: build/canvas.html, or build/canvas.svg with --print")
     p.add_argument("--decisions", type=pathlib.Path,
                    help="decision log (default: DECISIONS.md next to the canvas, if it exists)")
     p.add_argument("--watch", action="store_true", help="re-render whenever the canvas or the log changes")
+    p.add_argument("--lang", default="en", choices=sorted(LABELS), help="language of the labels the script adds")
+    p.add_argument("--print", dest="printable", action="store_true", help="write the blank canvas as A4 SVG")
+    p.add_argument("--pdf", type=pathlib.Path, help="with --print: also print the SVG to this PDF")
+    p.add_argument("--subtitle", default="", help="with --print: line under the title")
+    p.add_argument("--footer", default="", help="with --print: name, version, license, URL at the bottom right")
     a = p.parse_args()
+
+    if a.printable:
+        text, canvas = load(a.canvas)
+        out = a.out or pathlib.Path("build/canvas.svg")
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(svg(canvas, text, a.subtitle, a.footer, a.lang), encoding="utf-8")
+        print(f"Wrote {out}", flush=True)
+        if a.pdf:
+            to_pdf(out, a.pdf)
+            print(f"Wrote {a.pdf}", flush=True)
+        return
+
+    out = a.out or pathlib.Path("build/canvas.html")
     decisions = a.decisions or a.canvas.with_name("DECISIONS.md")
-    build(a.canvas, a.out, decisions, a.watch)
-    print(f"Wrote {a.out}", flush=True)
+    build(a.canvas, out, decisions, a.watch, a.lang)
+    print(f"Wrote {out}", flush=True)
     if not a.watch:
         return
     print("Watching for changes (Ctrl+C to stop).", flush=True)
@@ -298,8 +506,8 @@ def main():
             time.sleep(1)
             if (now := mtimes()) != last:
                 last = now
-                build(a.canvas, a.out, decisions, a.watch)
-                print(f"Updated {a.out}", flush=True)
+                build(a.canvas, out, decisions, a.watch, a.lang)
+                print(f"Updated {out}", flush=True)
     except KeyboardInterrupt:
         pass
 

@@ -1,0 +1,49 @@
+{
+  "core_version": "0.1.3",
+  "source": "https://github.com/steffen74/agentic-skillset-builder",
+  "setup": "setup-course",
+  "files": [
+    {
+      "core": "files/release-skillset.SKILL.md",
+      "path": ".claude/skills/release-skillset/SKILL.md",
+      "mode": "verbatim",
+      "core_sha": "1f1b0835a0f7",
+      "sha": "1f1b0835a0f7"
+    },
+    {
+      "core": "files/check_skillset.py",
+      "path": "scripts/check_skillset.py",
+      "mode": "verbatim",
+      "core_sha": "d8488fca8989",
+      "sha": "d8488fca8989"
+    },
+    {
+      "core": "files/DECISIONS.md",
+      "path": "skills/setup-course/templates/DECISIONS.md",
+      "mode": "adapted",
+      "core_sha": "4459c191075f",
+      "sha": "1623193d730b"
+    },
+    {
+      "core": "files/SIGNALS.md",
+      "path": "skills/setup-course/templates/SIGNALS.md",
+      "mode": "adapted",
+      "core_sha": "e8c31e393d39",
+      "sha": "34837cb6552f"
+    },
+    {
+      "core": "files/show-canvas.SKILL.md",
+      "path": "skills/show-canvas/SKILL.md",
+      "mode": "adapted",
+      "core_sha": "e8444049a036",
+      "sha": "91b80065cd62"
+    },
+    {
+      "core": "files/render_canvas.py",
+      "path": "skills/show-canvas/scripts/render_canvas.py",
+      "mode": "verbatim",
+      "core_sha": "e3b4b3e2fd8a",
+      "sha": "e3b4b3e2fd8a"
+    }
+  ]
+}

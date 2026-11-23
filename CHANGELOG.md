@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Adopted the core of the Agentic Skillset Builder (`.skillset-core.json`): `render_canvas.py` with `--print`/`--pdf` (HTML output unchanged), `scripts/check_skillset.py`, maintainer skill `release-skillset`. The printed canvas is now generated from `COURSE-CANVAS.md` (its prompts moved into `print:` lines), so the template is the single source of the canvas.
 - `/show-canvas` also counts decisions logged with `**Canvas block:**` (the decision log format of Agentic Data Science).
 
 ## 0.2.0 – 2026-11-05
