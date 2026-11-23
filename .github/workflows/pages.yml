@@ -19,6 +19,8 @@ concurrency:
 
 jobs:
   build:
+    # Runs only in public repositories (Pages for private ones needs a paid plan and would fail here).
+    if: ${{ !github.event.repository.private }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

@@ -1,5 +1,5 @@
 {
-  "core_version": "0.2.0",
+  "core_version": "0.2.1",
   "source": "https://github.com/steffen74/agentic-skillset-builder",
   "setup": "setup-course",
   "files": [
@@ -14,8 +14,8 @@
       "core": "files/pages.yml",
       "path": ".github/workflows/pages.yml",
       "mode": "verbatim",
-      "core_sha": "36b6d52dff68",
-      "sha": "36b6d52dff68"
+      "core_sha": "68a504c2ae3b",
+      "sha": "68a504c2ae3b"
     },
     {
       "core": "files/build_site.py",
