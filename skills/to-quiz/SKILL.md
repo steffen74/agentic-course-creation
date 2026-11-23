@@ -46,4 +46,6 @@ Answers and explanations never appear in a participant-facing file or in a publi
 
 Record the quiz link in `RESOURCES.md` for the unit (column *Quiz*). The slides show the link (and a QR code, where the slide format allows), not the questions; `/to-slides` takes it from `RESOURCES.md`.
 
+If the instructor pastes questions or answers into the chat, copy them verbatim into the quiz source first and confirm. Offer a commit (when the course repository uses git).
+
 Done when the questions are in the source, the quiz exists in the tool as a draft or an import file is ready with instructions, and its link or status is in `RESOURCES.md`.

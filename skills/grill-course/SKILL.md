@@ -20,7 +20,9 @@ Work in **rounds**. The **frontier** is every point whose prerequisites are sett
 ➡️ <your recommended answer, and why>
 ```
 
-Wait for the answers, write them down (below), recompute the frontier, and ask the next round.
+Wait for the answers, write them down (below), recompute the frontier, and ask the next round. Keep rounds to at most five questions and say roughly how many rounds are left.
+
+**The instructor's words first.** For the change, the learning goals and the weakest learner, ask for the instructor's own words before your recommendation; when the instructor adopts your wording unchanged, note that in `DECISIONS.md`. "I don't know yet" is a valid answer: it goes to **Open questions** with an owner, and the point counts as settled for this round.
 
 **Facts are your job; decisions are the instructor’s.** Workload numbers, video lengths, what a linked page says, which tools a template installs: look them up. Never ask for something you can find.
 
@@ -41,4 +43,4 @@ Sharpen fuzzy terms as they come up (“participants”, “project”, “repos
 - Each choice between alternatives goes into `DECISIONS.md` with reason and alternatives.
 - Anything left open goes to **Open questions** on the canvas, with who resolves it.
 
-Done when the frontier is empty: blocks 1–4 and 6 each hold a settled answer or an explicit open question, and at least the weakest persona exists. Show the updated blocks and ask the instructor to confirm before suggesting `/map-resources`.
+Done when the frontier is empty: blocks 1–4 and 6 each hold a settled answer or an explicit open question, and at least the weakest persona exists. Show the updated blocks and ask the instructor to confirm, offer a commit, before suggesting `/map-resources`.

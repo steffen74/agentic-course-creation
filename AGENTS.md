@@ -16,6 +16,6 @@ Instructions for agents working on this repository (the skills themselves, not a
 - Design files: `design/` (personas, sources, skill map, decisions, signals)
 - Canvas template: `skills/setup-course/templates/COURSE-CANVAS.md`
 - Printed canvas: `canvas/agentic-course-creation-canvas.svg` and `.pdf`, made with `python3 skills/show-canvas/scripts/render_canvas.py skills/setup-course/templates/COURSE-CANVAS.md --print --lang en --out canvas/agentic-course-creation-canvas.svg --pdf canvas/agentic-course-creation-canvas.pdf --subtitle "The agent walks the learner’s path, the instructor decides, checks come before release." --footer "Agentic Course Creation Canvas v0.2 · CC BY 4.0 · github.com/steffen74/agentic-course-creation"`
-- Example case: none yet (to be decided in the recap)
+- Example case: the self-study course of the Agentic Business Model Canvas (first run after the recap)
 - Checks: `python3 scripts/check_skillset.py`
 - Core: `.skillset-core.json`, synced with `/sync-core` from the Agentic Skillset Builder

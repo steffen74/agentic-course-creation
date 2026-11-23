@@ -10,7 +10,7 @@ Make the next unit, the next run and the skill set better from what happened. Re
 
 ## 1. Collect signals
 
-Ask the instructor what happened, in one round: what went differently than planned, where learners got stuck, which questions came up more than once, which deliverables were missing. Add facts you can look up yourself (chat questions the instructor pastes, quiz results, deliverables in repositories). Write each as an entry in `SIGNALS.md`; no names of participants.
+Ask the instructor what happened, in one round: what went differently than planned, where learners got stuck, which questions came up more than once, which deliverables were missing. Add facts you can look up yourself (chat questions the instructor pastes, quiz results, deliverables in repositories). Copy anything the instructor pastes into the chat verbatim into `SIGNALS.md` first (without participant names) and confirm. Write each as an entry in `SIGNALS.md`; no names of participants.
 
 ## 2. Explain each signal
 
@@ -24,8 +24,8 @@ A numbered list, each with evidence and a recommendation, in these categories:
 - **Check**: the check that would have caught it, with its type (automated, walkthrough, manual). A mistake caught by a learner is a check waiting to be written.
 - **Boundary and personas**: an entry for block 6, or a persona that was missing or wrong.
 - **Canvas and plan**: blocks or plan items that turned out wrong.
-- **Skill rule**: a change to a skill in this skill set (for example a new typical gap in `assumed-knowledge`, a new question in `walk-through`). Prefer a check over a rule. Write it as a diff against the skill file, and suggest filing it as an issue or pull request in the skill repository so other courses benefit.
+- **Skill rule**: a change to a skill in this skill set (for example a new typical gap in `assumed-knowledge`, a new question in `walk-through`). Prefer a check over a rule. Write it to `SKILL-PROPOSALS.md` in the course repository: one plain sentence first, then a diff against the skill file; suggest filing it as an issue or pull request in the skill repository so other courses benefit.
 
 ## 4. Apply
 
-Apply only what the instructor picks. Update the status of each signal in `SIGNALS.md` and block 11 of the canvas (now / next run). Done when every picked item is written to its file and every signal has a status.
+Apply only what the instructor picks. Update the status of each signal in `SIGNALS.md` and block 11 of the canvas (now / next run). Done when every picked item is written to its file and every signal has a status. Offer a commit (when the course repository uses git).

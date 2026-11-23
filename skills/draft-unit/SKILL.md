@@ -10,7 +10,7 @@ Draft one unit’s resources. Read `COURSE-CANVAS.md`, `PLAN.md`, `PERSONAS.md`,
 
 ## 1. Write the path first
 
-Before any content, write the **learner path** for the unit as a numbered list in the session file’s instructor notes: every step a learner takes from opening the participant page to handing in the deliverable, each with
+Before any content, ask the instructor in a few words what this unit should achieve and what learners should do in it; then write the **learner path** for the unit as a numbered list in the session file’s instructor notes: every step a learner takes from opening the participant page to handing in the deliverable, each with
 
 - what they need (concept, tool, file, link, account) and where that came from (boundary, earlier unit, this page),
 - the expected result they can see.
@@ -31,4 +31,4 @@ Compute sample answers by running the code on the course data, never from memory
 
 Show the drafts with a short list of choices you made (task wording, which video, how much is optional) and what you were unsure about. The instructor edits or approves. Log choices that affect other units in `DECISIONS.md`.
 
-Done when the instructor has approved the drafts and `RESOURCES.md` lists the unit as *draft*. Suggest `/to-slides <unit>` if the session has input blocks, then `/walk-through <unit>`; never mark a unit *released* in this skill.
+Done when the instructor has approved the drafts and `RESOURCES.md` lists the unit as *draft*. Offer a commit (when the course repository uses git). Suggest `/to-slides <unit>` if the session has input blocks, then `/walk-through <unit>`; never mark a unit *released* in this skill.

@@ -16,7 +16,7 @@
 Designing, building and improving a course with a coding agent, without handing over the teaching judgement. Without skills, agents produce plausible material fast, but miss what learners don't know, have or have done; ten pages in three repositories drift apart; and lessons from session 1 do not reach session 2. Failure story: a homework asks learners to work in "your copy of the template repository", but no page tells them to make one.
 
 ### 2. Users 👤
-Instructors at opencampus.sh and similar, running a course with participant pages, repositories and platforms; comfortable with a coding agent and Git. Built while running "Introduction to Data Science and Machine Learning". See `PERSONAS.md`. *(to confirm: whether co-instructors without agent experience are in scope)*
+Instructors at opencampus.sh and similar, running a course with participant pages, repositories and platforms; comfortable with a coding agent and Git. Built while running "Introduction to Data Science and Machine Learning". See `PERSONAS.md`. Co-instructors without agent experience are in scope (weakest user, decided 2026-11-23).
 
 ### 3. Outcomes 👤
 - A course repository with canvas, personas, resource map, plan, decisions, signals and checks.
@@ -55,7 +55,7 @@ On the users' work: `course-checks` catalogue (alignment, boundary, workload, co
 12 user-invoked skills and 3 reference skills, released as v0.2.0. See `SKILL-MAP.md`.
 
 ### 10. Dry-run signals 🤖
-No dry run on a fictitious case yet. Signals so far come from one real course (see `SIGNALS.md`).
+No dry run on a fictitious case. The first run after the recap is the self-study course of the Agentic Business Model Canvas (decided 2026-11-23); signals so far come from one real course (see `SIGNALS.md`).
 
 ### 11. Improvements 👤
 Recap with the Agentic Skillset Builder (2026-11-23): core adopted, design files reconstructed. Next: builder patterns in the skills, an example case and a dry run, then the course for the Agentic Business Model Canvas.
@@ -63,8 +63,7 @@ Recap with the Agentic Skillset Builder (2026-11-23): core adopted, design files
 ---
 
 ## Open questions
-- Personas and evidence criteria marked *(to confirm)*. (Steffen)
-- Example case for dry runs (a fictitious course). (Steffen, in the recap)
+- Evidence criterion marked *(to confirm)*. (Steffen)
 
 ## Decision log
 See `design/DECISIONS.md`.

@@ -19,10 +19,10 @@ Write `PLAN.md` (or the file named in `AGENTS.md`) with four parts:
 
 ## 2. Stop point
 
-Present the plan with the problems you found first: unassessed goals, items used before they are added to the boundary, units over budget, uneven load. For each, recommend a fix. The instructor decides; log structural choices (sequence, project, where a topic goes) in `DECISIONS.md` and update block 7.
+Present the plan with the problems you found first, in batches of at most five: unassessed goals, items used before they are added to the boundary, units over budget, uneven load. For each, recommend a fix. The instructor decides; log structural choices (sequence, project, where a topic goes) in `DECISIONS.md` and update block 7.
 
 ## 3. Checks
 
 Add to `checks/README.md` the plan-level checks the instructor confirmed (for example: every goal is assessed; workload per unit within ± 30 % of the mean; total within budget). Load `course-checks` for the format.
 
-Done when the instructor has confirmed `PLAN.md` and every problem is fixed or listed under **Open questions**. Suggest `/draft-unit` for the first unit without material.
+Done when the instructor has confirmed `PLAN.md` and every problem is fixed or listed under **Open questions**. Offer a commit (when the course repository uses git). Suggest `/draft-unit` for the first unit without material.

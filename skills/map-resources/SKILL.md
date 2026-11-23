@@ -30,10 +30,10 @@ Compare the occurrences of each shared fact. Report:
 
 ## 3. Stop point: decisions
 
-Present the findings as a numbered list. For each conflict, recommend which copy becomes the **source of truth** and how mirrors stay in sync (generated, checked by `course-checks`, or edited by hand with a check). The instructor decides; log each decision in `DECISIONS.md`.
+Present the findings as a numbered list, in batches of at most five, the conflicts and leaks first; a blanket "ok" never settles a source of truth or a visibility question, ask those one by one. For each conflict, recommend which copy becomes the **source of truth** and how mirrors stay in sync (generated, checked by `course-checks`, or edited by hand with a check). The instructor decides; log each decision in `DECISIONS.md`.
 
 ## 4. Write
 
 Update `RESOURCES.md` (locations, source-of-truth table, resources per unit), canvas block 5 (constraints, short, with links) and block 9 (one line per unit with status). Never fix a conflict in the material yourself in this skill; list it under **Open questions** or hand it to `/review-unit`.
 
-Done when every location is either mapped or marked *not read*, and every conflict has a decision or an open question with an owner.
+Done when every location is either mapped or marked *not read*, and every conflict has a decision or an open question with an owner. Offer a commit (when the course repository uses git).

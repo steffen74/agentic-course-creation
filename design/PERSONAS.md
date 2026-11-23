@@ -1,6 +1,6 @@
 # Personas
 
-> Reconstructed 2026-11-23 from README and canvas guide; to confirm.
+> Reconstructed 2026-11-23 from README and canvas guide; confirmed by the maintainer on 2026-11-23.
 
 ## Steffen: instructor and course owner
 
@@ -12,7 +12,7 @@
 - **Typical failure without the skillset:** material that is correct but assumes a step learners never took; facts drifting between repositories.
 - **Source:** the maintainer, while running "Introduction to Data Science and Machine Learning".
 
-## Co-instructor: subject expert, new to agents *(to confirm)*
+## Co-instructor: subject expert, new to agents (weakest user)
 
 - **Setting:** teaches part of a course, prepares single units.
 - **Agent experience:** has used a chat assistant, not a coding agent; has not run a skill.

@@ -54,4 +54,6 @@ Decks are mirrors: they repeat facts from the session plan and the participant p
 
 If decks are published to participants, publish the approved deck to the handbook: export it as PDF (when the slide tool can only be exported by hand, ask the instructor to export it and say exactly where to save it), name it after the unit (for example `week-02-slides.pdf`), put it in the handbook’s assets path from `AGENTS.md`, remove speaker notes and hidden answer slides from the export, and link it from the unit’s participant page under its materials. A later change to the deck means a new export; the PDF in the handbook is a mirror of the deck.
 
+Offer a commit (when the course repository uses git).
+
 Done when the instructor has approved the deck, `RESOURCES.md` lists it for the unit with status *draft*, and its location is linked from the session plan, and, if published, the PDF is linked from the unit’s participant page. If the deck is published to participants, suggest `/walk-through <unit>` next; otherwise `/review-unit <unit>`.

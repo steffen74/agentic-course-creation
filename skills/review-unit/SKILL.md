@@ -42,4 +42,4 @@ The verdict is the instructor’s, and so is every finding with more than one re
 - **Constraints**: canvas entries, earlier decisions or facts that rule an option in or out.
 - **Options**: two to four, each with its consequence (what changes where, what it costs, what risk stays). Put your recommendation first and mark it *(Recommended)*.
 
-Ask the verdict last, after the questions it depends on. Apply only the fixes the instructor picks, then rerun the failed checks. Record the verdict and each decision in `DECISIONS.md` and set the unit’s status in `RESOURCES.md`.
+Ask at most five questions at a time. Ask the verdict last, after the questions it depends on. Apply only the fixes the instructor picks, then rerun the failed checks. Record the verdict and each decision in `DECISIONS.md` and offer a commit, and set the unit’s status in `RESOURCES.md`.

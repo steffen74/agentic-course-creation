@@ -33,6 +33,7 @@ Summarise what is present and missing. Then take the sections in order, one answ
 
 - Copy the templates in [`templates/`](templates/) to the repository root. Never overwrite an existing file; report it instead.
 - Fill the canvas header; put the one-sentence change into block 1 as a draft; list the locations from B in `RESOURCES.md`.
+- Create `CLAUDE.md` with the single line `@AGENTS.md` if it is missing (Claude Code loads `CLAUDE.md`, other agents `AGENTS.md`).
 - Create `checks/README.md` listing the checks from `course-checks` that apply, each marked *automated* (with the command) or *walkthrough* or *manual*. Add a link check over all Markdown files if a tool is available (for example `lychee` or a short script); otherwise mark it manual.
 - Existing material that already answers a canvas block (a concept with learning goals, a workload table) is linked from that block, not copied.
 - Add this section to `AGENTS.md` (create the file if needed):

@@ -58,4 +58,4 @@ Then:
 
 End with the knowledge the walk had to assume that is not on the boundary: each item is either a gap in the material or a missing entry in block 6. Which one is the instructor’s decision.
 
-Append a dated entry to `SIGNALS.md` (source: *walkthrough*, persona, unit, counts per severity, link to the report). Done when every participant-facing step of the unit has a row or is listed under *walked without finding*, and the report says which steps were executed. Suggest `/review-unit` for fixes, or `/course-retro` when the gap points to a missing check.
+When you hand the report to the instructor, lead with the cross-persona list and at most five blockers; the rest stays in the report file. Append a dated entry to `SIGNALS.md` (source: *walkthrough*, persona, unit, counts per severity, link to the report). Offer a commit (when the course repository uses git). Done when every participant-facing step of the unit has a row or is listed under *walked without finding*, and the report says which steps were executed. Suggest `/review-unit` for fixes, or `/course-retro` when the gap points to a missing check.
