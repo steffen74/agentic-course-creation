@@ -2,7 +2,9 @@
 
 A canvas, a process and a set of agent skills for designing, building and improving a course with a coding agent, without handing over the teaching judgement.
 
-> Status: **v0.1, draft.** A companion to [Agentic Data Science](https://github.com/steffen74/agentic-data-science), built while running the opencampus.sh course “Introduction to Data Science and Machine Learning”. Same canvas grammar, same skill conventions.
+> Status: **v0.3.** A companion to [Agentic Data Science](https://github.com/steffen74/agentic-data-science), built while running the opencampus.sh course “Introduction to Data Science and Machine Learning”. Same canvas grammar, same skill conventions.
+
+**Website:** https://steffen74.github.io/agentic-course-creation/
 
 ## Why
 
