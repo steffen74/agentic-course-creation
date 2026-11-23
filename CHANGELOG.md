@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.3.0 – 2026-11-23
+
 - `/setup-course` asks for the course folder (a course can live in `course/` of another repository), the format (sessions or self-study), the visibility rule that fits it, and the course language (templates are translated, structure kept). The `AGENTS.md` section gets `Format:` and `Language:` lines and paths with the folder.
 - Self-study courses: `/draft-unit` writes pages with exercise, reference solution and self-check instead of a session plan; `/to-quiz` and `/to-slides` stop when the course has none. In a public self-study course, solutions are part of the course and the visibility checks look for learner data instead.
 - `/draft-unit` takes scripted replies and expected answers from a real run of the tool learners use; new walk-through check that they match the current tool.
